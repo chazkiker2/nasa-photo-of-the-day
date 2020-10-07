@@ -36,22 +36,21 @@ This project was put together using create-react-app (CRA). You will not need to
       Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
 - [ ] Push commits: git push origin `<firstName-lastName>`.
 
-
 ### Task 2: MVP
 
-**Planning**
+#### **Planning**
 
 - [ ] If you want, this is the time to make a simple design spec (look up ["simple wireframes"](https://www.google.com/search?q=simple+wireframes) to find resources & examples). **A pen & paper sketch (or outline) is often the fastest way to start your planning.**
 - [ ] Once you have a design plan in mind, break down the designs into individual components.
 - [ ] Plan which components will hold state, what data each needs from props (if any), and where you will be making your data fetch.
 - [ ] Now it's time to jump into the code!
 
-**File structure**
+#### **File structure**
 
 - [ ] Take a look at your planned components. Create the folders and files you need for each component.
 - [ ] Leave most of them blank for now - you need to get your data from the API before you can really get these built.
 
-**Fetching the Data**
+#### **Fetching the Data**
 
 - [ ] In `App.js` (or where ever you wanted to fetch the data) add state for the data you'll be getting from NASA.
 - [ ] Add an effect hook to handle the API call side effect.
@@ -64,16 +63,16 @@ This project was put together using create-react-app (CRA). You will not need to
 DEMO KEY rate limits:
 
 > Hourly Limit: 30 requests per IP address per hour
-
 > Daily Limit: 50 requests per IP address per day
 
 _Note: if the photo url is NOT a photo, you will need to learn how to display a video in a React app on your own, OR just fetch the APOD from a different date by adding this to the back of the API endpoint: `&date=2012-03-14`_
 
-**Adding the Data to State**
+#### **Adding the Data to State**
 
 - [ ] Once you have made the call correctly, and logged the data, add the data to the state property you built.
 
-**Display the Data**
+#### **Display the Data**
+
 Now is the time to build out your other components. Compose your UI, and then pass the data to your children components via props so you can render it on the DOM.
 
 #### _MVP Requirements:_
@@ -81,7 +80,7 @@ Now is the time to build out your other components. Compose your UI, and then pa
 - [ ] Use the effect hook to fetch the APOD data when the component mounts.
 - [ ] Display the APOD data in different components that are composed together to build your UI.
 
-#### Pro Tips:
+#### Pro Tips
 
 - You may run into an error where your components try to access object properties before your data is finished being fetched - ie. `Cannot read property 'url' of undefined`. This means that the data you passed as props is undefined, when you were expecting it to be an object. You can fix this by simply adding something like this to any component that needs to read data from your state object:
 
@@ -106,11 +105,10 @@ Do not attempt stretch problems until MVP has been reached and a final commit ha
 
 ## Submission Format
 
-
 Follow these steps for completing your project.
 
 - [ ] Submit a Pull-Request to merge Branch into `main` (student's Repository).
 
-----
+---;
 
- ## Part II - [Advanced Styling Techniques](DAY_TWO_README.md)
+## Part II - [Advanced Styling Techniques](DAY_TWO_README.md)
