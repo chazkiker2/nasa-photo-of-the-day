@@ -1,4 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { BASE_URL, API_KEY } from '../constants'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
 
+
+const PictureDetails = (props) => {
+	const {about} = props;
+	return (
+		<div className="pic-details">
+			<p>{about}</p>
+		</div>
+	);
+};
+
+export default PictureDetails;
