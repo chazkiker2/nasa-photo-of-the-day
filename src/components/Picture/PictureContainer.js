@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
-import PictureDetails from "./PictureDetails";
+import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+// import PictureDetails from "./PictureDetails";
 
 
 const PictureContainer = (props) => {
@@ -18,14 +18,14 @@ const PictureContainer = (props) => {
 
 	return (
 		<div className="pic-container" style={stylePic}>
-			<Card style={{width: "40%"}}>
+			<Card style={{width: "40%", margin: "2rem",}}>
 				<CardBody>
-					<CardTitle style={{fontWeight: "bold", textAlign: "center"}}>{title}</CardTitle>
-					<CardSubtitle style={{fontWeight: "200", textAlign: "center"}}>{date}</CardSubtitle>
+					<CardTitle style={{fontWeight: "bold", textAlign: "center", fontSize: "2rem"}}>{title}</CardTitle>
+					<CardSubtitle style={{fontWeight: "400", textAlign: "center", fontSize: "1.5rem"}}>{date}</CardSubtitle>
 				</CardBody>
 				<img src={url} alt={title} />
 				<CardBody>
-					<CardText>{explanation}</CardText>
+					<CardText style={{fontSize: "1.2rem"}}>{explanation}</CardText>
 				</CardBody>
 			</Card>
 			{/* <h3>{title ? title : "title"}</h3>

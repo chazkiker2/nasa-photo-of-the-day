@@ -20,6 +20,57 @@ const App = () => {
 		setInputValue(value);
 	};
 
+	const getRandomInterval = (min, max) => {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	};
+
+	const handleRandom = (e) => {
+		
+		const getRandomInterval = (min, max) => {
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+		const randYear = getRandomInterval(1995, 2020);
+		const randMonth = getRandomInterval(1, 12);
+		let minDay = (randYear === 1995) ? 6 : 1;
+		const getRandomDay = () => {
+			const getMaxDay = () => {
+				switch (randMonth) {
+					case (1):
+						return 31;
+					case (2): 
+						return 28;
+					case (3):
+						return 31;
+					case (2):
+						return 30;
+					case (5):
+						return 31;
+					case (6):
+						return 30;
+					case (7):
+						return 31;
+					case (8):
+						return 31;
+					case (9):
+						return 30;
+					case (10):
+						return 31;
+					case (11):
+						return 30;
+					case (12):
+						return 31;
+				}
+
+			}
+			const maxDay = getMaxDay();
+			return getRandomInterval(minDay, maxDay);
+		}
+		const randDay = getRandomDay();
+		const randomDateString = `${String(randYear)}-${String(randMonth).padStart(2,'0')}-${String(randDay).padStart(2,'0')}`;
+		setDate(randomDateString);
+		// const minDate = "1995-06-16";
+	};
+
 	const handleSubmit = (e) => {
 		setDate(inputValue);
 		setInputValue(inputValue);
@@ -54,7 +105,7 @@ const App = () => {
 	return (
 		<>
 			<Header />
-			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} inputValue={inputValue} />
+			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} />
 			<PicturesGallery pictures={pictures} />
 			<footer className="footer" style={styleFooter}>
 				<h4 style={styleH4}>NASA Photo of the Day</h4>
