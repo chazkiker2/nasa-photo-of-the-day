@@ -10,17 +10,11 @@ const DateInput = (props) => {
 		alignItems: "center",
 	};
 
-
-
 	return (
 		<div className="date-container" style={styleDiv}>
-			
 			<h5>Search for Date: (YYYY-MM-DD)</h5>
-			
 			<input type="text" value={inputValue} onChange={handleChange} />
 			<button onClick={handleSubmit}>Submit</button>
-			{/* <input type="submit" value="Submit" /> */}
-			{/* <input id="reset" type="reset" value="Reset" onClick={() => resetInput} /> */}
 		</div>
 	);
 }

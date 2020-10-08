@@ -3,7 +3,6 @@ import React from "react";
 const Header = () => {
 	const headStyle = {
 		display: "flex",
-		flexFlow: "row nowrap",
 		justifyContent: "center",
 		alignItems: "center",
 		height: "60px",
@@ -11,10 +10,7 @@ const Header = () => {
 	}
 
 	const h1Style={
-		display: "inline-block",
-		// fontSize: "12px",
 		color: "white",
-		margin: "2px",
 	}
 	return (
 		<header style={headStyle}>

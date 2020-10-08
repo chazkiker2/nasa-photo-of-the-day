@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 
 const PictureDetails = (props) => {
 	const {about} = props;
+
+	const styleP = {
+		maxWidth: "960px",
+	};
+
 	return (
-		<div className="pic-details">
+		<div style={styleP} className="pic-details">
 			<p>{about}</p>
 		</div>
 	);
