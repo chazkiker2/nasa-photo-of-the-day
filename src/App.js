@@ -72,15 +72,21 @@ const App = () => {
 		fetchData();
 	}, [date]);
 
-	const styleFooter = {
-		display: "flex",
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "black",
-	};
-	const styleH4 = {
-		color: "white",
-	};
+	// const styleFooter = {
+	// 	display: "flex",
+	// 	justifyContent: "center",
+	// 	alignItems: "center",
+	// 	backgroundColor: "black",
+	// };
+	// const styleH4 = {
+	// 	color: "white",
+	// };
+
+	const StyledContainer = styled.div`
+		box-sizing: border-box;
+		font-size: 62.5%;
+		background-color: ${pr => pr.theme.lightBlue};
+	`;
 
 	const StyledFooter = styled.footer`
 		display: flex;
@@ -92,25 +98,26 @@ const App = () => {
 		font-style: normal;
 		margin-bottom: 0px;
 		h4 {
+			display: block;
 			font-size: 3rem;
 			font-family: ${pr => pr.theme.nasaFont.fontFamily};
 			font-weight: 400;
 			font-style: normal;
-			color: ${pr => pr.theme.lightCreme};
-			/* text-align: center; */
+			color: ${pr => pr.theme.nasaRed};
+			margin: 0 auto;
 		}
 	`;
 
 	return (
-		<>
+		<StyledContainer>
 			<Header />
 			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} />
 			{/* <PictureGallery picture={picture} /> */}
 			<PictureContainer picture={picture} />
 			<StyledFooter className="footer" >
-				<h4 style={styleH4}>NASA Photo of the Day</h4>
+				<h4>NASA Photo of the Day</h4>
 			</StyledFooter>
-		</>
+		</StyledContainer>
 	);
 };
 
