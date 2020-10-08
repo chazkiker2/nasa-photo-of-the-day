@@ -8,10 +8,10 @@ import "./App.css";
 // COMPONENTS
 import Header from "./components/Header/Header";
 import DateInput from "./components/DateInput/DateInput";
-import PicturesGallery from "./components/Picture/PicturesGallery";
+import PictureGallery from "./components/Picture/PictureGallery";
 
 const App = () => {
-	const [pictures, setPictures] = useState([]);
+	const [picture, setPicture] = useState();
 	const [date, setDate] = useState("2020-10-07");
 	const [inputValue, setInputValue] = useState("");
 
@@ -25,13 +25,8 @@ const App = () => {
 	};
 
 	const handleRandom = (e) => {
-		
-		const getRandomInterval = (min, max) => {
-			return Math.floor(Math.random() * (max - min + 1) + min);
-		}
 		const randYear = getRandomInterval(1995, 2020);
 		const randMonth = getRandomInterval(1, 12);
-		let minDay = (randYear === 1995) ? 6 : 1;
 		const getRandomDay = () => {
 			const getMaxDay = () => {
 				switch (randMonth) {
@@ -41,7 +36,7 @@ const App = () => {
 						return 28;
 					case (3):
 						return 31;
-					case (2):
+					case (4):
 						return 30;
 					case (5):
 						return 31;
@@ -59,16 +54,15 @@ const App = () => {
 						return 30;
 					case (12):
 						return 31;
+					default:
+						return 28;
 				}
-
 			}
-			const maxDay = getMaxDay();
-			return getRandomInterval(minDay, maxDay);
+			return getRandomInterval( ((randYear === 1995) ? 6 : 1), getMaxDay())
 		}
 		const randDay = getRandomDay();
 		const randomDateString = `${String(randYear)}-${String(randMonth).padStart(2,'0')}-${String(randDay).padStart(2,'0')}`;
 		setDate(randomDateString);
-		// const minDate = "1995-06-16";
 	};
 
 	const handleSubmit = (e) => {
@@ -83,7 +77,7 @@ const App = () => {
 		const fetchData = () => {
 			axios.get(queryString)
 				.then(res => {
-					setPictures(res.data);
+					setPicture(res.data);
 				})
 				.catch(err => {
 					debugger;
@@ -106,7 +100,7 @@ const App = () => {
 		<>
 			<Header />
 			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} />
-			<PicturesGallery pictures={pictures} />
+			<PictureGallery picture={picture} />
 			<footer className="footer" style={styleFooter}>
 				<h4 style={styleH4}>NASA Photo of the Day</h4>
 			</footer>
