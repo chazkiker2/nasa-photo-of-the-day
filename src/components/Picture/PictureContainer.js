@@ -4,8 +4,8 @@ import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 
 const PictureContainer = (props) => {
-	const { pictures } = props;
-	const { title, date, url, explanation } = pictures;
+	const { picture } = props;
+	const { title, date, url, explanation } = picture;
 
 	const stylePic = {
 		display: "flex",
@@ -32,10 +32,6 @@ const PictureContainer = (props) => {
 					<CardText style={{fontSize: "1.2rem"}}>{explanation}</CardText>
 				</CardBody>
 			</Card>
-			{/* <h3>{title ? title : "title"}</h3>
-			<h4>{date ? date : "date"}</h4>
-			<img src={url ? url : "src"} alt={title} />
-			<PictureDetails about={explanation ? explanation : "explanation"} /> */}
 		</div>
 	);
 };

@@ -2,18 +2,21 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 // CONSTANTS
-import {API_KEY, BASE_URL} from "./constants/index";
+import {API_KEY, BASE_URL, getCurrentDateFormatted} from "./constants/index";
 // STYLE
 import "./App.css";
 // COMPONENTS
 import Header from "./components/Header/Header";
 import DateInput from "./components/DateInput/DateInput";
-import PictureGallery from "./components/Picture/PictureGallery";
+// import PictureGallery from "./components/Picture/PictureGallery";
+import PictureContainer from "./components/Picture/PictureContainer";
 
 const App = () => {
-	const [picture, setPicture] = useState();
-	const [date, setDate] = useState("2020-10-07");
+	const [picture, setPicture] = useState({});
+	const [date, setDate] = useState(getCurrentDateFormatted());
 	const [inputValue, setInputValue] = useState("");
+
+
 
 	const handleChange = (e) => {
 		const {value} = e.target;
@@ -36,9 +39,7 @@ const App = () => {
 				} else {
 					return 31;
 				}
-				//31 : 1, 3, 5, 7, 8, 10, 12
-				// 30 : 4, 6, 9, 11
-				// 28 : 2
+				//31 : 1, 3, 5, 7, 8, 10, 12 || 30 : 4, 6, 9, 11 || 28 : 2
 			}
 			return getRandomInterval( ((randYear === 1995) ? 6 : 1), getMaxDay())
 		}
@@ -82,7 +83,8 @@ const App = () => {
 		<>
 			<Header />
 			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} />
-			<PictureGallery picture={picture} />
+			{/* <PictureGallery picture={picture} /> */}
+			<PictureContainer picture={picture} />
 			<footer className="footer" style={styleFooter}>
 				<h4 style={styleH4}>NASA Photo of the Day</h4>
 			</footer>
