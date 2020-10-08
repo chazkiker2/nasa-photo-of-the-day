@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from "styled-components";
 import axios from "axios";
 // CONSTANTS
-import {API_KEY, BASE_URL, getCurrentDateFormatted} from "./constants/index";}
+import { API_KEY, BASE_URL, getCurrentDateFormatted } from "./constants/index";
 // STYLE
 import "./App.css";
 
@@ -19,7 +20,7 @@ const App = () => {
 
 
 	const handleChange = (e) => {
-		const {value} = e.target;
+		const { value } = e.target;
 		setInputValue(value);
 	};
 
@@ -29,8 +30,8 @@ const App = () => {
 
 	const handleRandom = (e) => {
 		const randYear = getRandomInterval(1995, 2020);
-		const randMonth = (randYear === 1995) 
-			? getRandomInterval(6, 12) 
+		const randMonth = (randYear === 1995)
+			? getRandomInterval(6, 12)
 			: getRandomInterval(1, 12);
 		const getRandomDay = () => {
 			const getMaxDay = () => {
@@ -43,10 +44,10 @@ const App = () => {
 				}
 				//31 : 1, 3, 5, 7, 8, 10, 12 || 30 : 4, 6, 9, 11 || 28 : 2
 			}
-			return getRandomInterval( ((randYear === 1995) ? 16 : 1), getMaxDay())
+			return getRandomInterval(((randYear === 1995) ? 16 : 1), getMaxDay())
 		}
 		const randDay = getRandomDay();
-		const randomDateString = `${String(randYear)}-${String(randMonth).padStart(2,'0')}-${String(randDay).padStart(2,'0')}`;
+		const randomDateString = `${String(randYear)}-${String(randMonth).padStart(2, '0')}-${String(randDay).padStart(2, '0')}`;
 		setDate(randomDateString);
 	};
 
@@ -81,15 +82,34 @@ const App = () => {
 		color: "white",
 	};
 
+	const StyledFooter = styled.footer`
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: ${pr => pr.theme.primaryBlue};
+		font-family: ${pr => pr.theme.nasaFont.fontFamily};
+		font-weight: 400;
+		font-style: normal;
+		margin-bottom: 0px;
+		h4 {
+			font-size: 3rem;
+			font-family: ${pr => pr.theme.nasaFont.fontFamily};
+			font-weight: 400;
+			font-style: normal;
+			color: ${pr => pr.theme.lightCreme};
+			/* text-align: center; */
+		}
+	`;
+
 	return (
 		<>
 			<Header />
 			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} />
 			{/* <PictureGallery picture={picture} /> */}
 			<PictureContainer picture={picture} />
-			<footer className="footer" style={styleFooter}>
+			<StyledFooter className="footer" >
 				<h4 style={styleH4}>NASA Photo of the Day</h4>
-			</footer>
+			</StyledFooter>
 		</>
 	);
 };

@@ -1,3 +1,5 @@
+import { getDefaultNormalizer } from "@testing-library/react"
+
 export default {
 	primaryBlue: "#13293D",
 	secondaryBlue: "#16324F",
@@ -15,5 +17,31 @@ export default {
 	padding: {
 		small: "4px",
 		medium: "8px",
-	}
+	},
+	nasaFont: {
+		fontFamily: "nasalization, sans-serif",
+		fontWeight: "400",
+		fontStyle: "normal",
+	},
+	attrMonoReg: {
+		fontFamily: "attribute-mono, sans-serif",
+		fontWeight: "400",
+		fontStyle: "normal",
+	},
+	attrMonoLight: {
+		fontFamily: "attribute-mono, sans-serif",
+		fontWeight: "300",
+		fontStyle: "normal",
+	},
+	attrMonoBold: {
+		fontFamily: "attribute-mono, sans-serif",
+		fontWeight: "700",
+		fontStyle: "normal",
+	},
+	// nasaFontFamily: "nasalization, sans-serif",
+	// nasaFontWeight: "400",
+	// nasaFontStyle: "normal",
+	// font-family: nasalization, sans-serif;
+	// font-weight: 400;
+	// font-style: normal;
 }
