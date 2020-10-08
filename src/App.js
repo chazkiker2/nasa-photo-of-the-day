@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 // CONSTANTS
-import {API_KEY, BASE_URL, getCurrentDateFormatted} from "./constants/index";
+import {API_KEY, BASE_URL, getCurrentDateFormatted} from "./constants/index";}
 // STYLE
 import "./App.css";
+
 // COMPONENTS
-import Header from "./components/Header/Header";
-import DateInput from "./components/DateInput/DateInput";
-// import PictureGallery from "./components/Picture/PictureGallery";
-import PictureContainer from "./components/Picture/PictureContainer";
+import Header from "./components/Header";
+import DateInput from "./components/DateInput";
+import PictureContainer from "./components/PictureContainer";
 
 const App = () => {
 	const [picture, setPicture] = useState({});
