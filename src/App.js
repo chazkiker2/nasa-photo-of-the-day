@@ -86,10 +86,9 @@ const App = () => {
 		box-sizing: border-box;
 		font-size: 62.5%;
 		background-color: ${pr => pr.theme.lightBlue};
-	`;
 
-	const StyledFooter = styled.footer`
-		display: flex;
+		footer {
+			display: flex;
 		justify-content: center;
 		align-items: center;
 		background-color: ${pr => pr.theme.primaryBlue};
@@ -106,17 +105,17 @@ const App = () => {
 			color: ${pr => pr.theme.nasaRed};
 			margin: 0 auto;
 		}
+		}
 	`;
 
 	return (
 		<StyledContainer>
 			<Header />
 			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} />
-			{/* <PictureGallery picture={picture} /> */}
 			<PictureContainer picture={picture} />
-			<StyledFooter className="footer" >
+			<footer className="footer">
 				<h4>NASA Photo of the Day</h4>
-			</StyledFooter>
+			</footer>
 		</StyledContainer>
 	);
 };

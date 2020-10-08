@@ -1,5 +1,3 @@
-import { getDefaultNormalizer } from "@testing-library/react"
-
 export default {
 	primaryBlue: "#13293D",
 	secondaryBlue: "#16324F",
@@ -38,10 +36,4 @@ export default {
 		fontWeight: "700",
 		fontStyle: "normal",
 	},
-	// nasaFontFamily: "nasalization, sans-serif",
-	// nasaFontWeight: "400",
-	// nasaFontStyle: "normal",
-	// font-family: nasalization, sans-serif;
-	// font-weight: 400;
-	// font-style: normal;
 }
