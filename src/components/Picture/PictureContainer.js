@@ -21,9 +21,13 @@ const PictureContainer = (props) => {
 			<Card style={{width: "40%", margin: "2rem",}}>
 				<CardBody>
 					<CardTitle style={{fontWeight: "bold", textAlign: "center", fontSize: "2rem"}}>{title}</CardTitle>
-					<CardSubtitle style={{fontWeight: "400", textAlign: "center", fontSize: "1.5rem"}}>{date}</CardSubtitle>
+					<CardSubtitle 
+						style={{fontWeight: "400", textAlign: "center", fontSize: "1.5rem"}}
+						>{date}
+					</CardSubtitle>
 				</CardBody>
-				<img src={url} alt={title} />
+				<img src={url} alt={title} 
+					style={{display: "inline-block", textAlign: "center" }}/>
 				<CardBody>
 					<CardText style={{fontSize: "1.2rem"}}>{explanation}</CardText>
 				</CardBody>
