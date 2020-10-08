@@ -29,7 +29,9 @@ const App = () => {
 
 	const handleRandom = (e) => {
 		const randYear = getRandomInterval(1995, 2020);
-		const randMonth = getRandomInterval(1, 12);
+		const randMonth = (randYear === 1995) 
+			? getRandomInterval(6, 12) 
+			: getRandomInterval(1, 12);
 		const getRandomDay = () => {
 			const getMaxDay = () => {
 				if (randMonth === 2) {
@@ -41,7 +43,7 @@ const App = () => {
 				}
 				//31 : 1, 3, 5, 7, 8, 10, 12 || 30 : 4, 6, 9, 11 || 28 : 2
 			}
-			return getRandomInterval( ((randYear === 1995) ? 6 : 1), getMaxDay())
+			return getRandomInterval( ((randYear === 1995) ? 16 : 1), getMaxDay())
 		}
 		const randDay = getRandomDay();
 		const randomDateString = `${String(randYear)}-${String(randMonth).padStart(2,'0')}-${String(randDay).padStart(2,'0')}`;
