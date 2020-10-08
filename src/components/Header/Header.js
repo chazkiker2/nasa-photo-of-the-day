@@ -4,22 +4,20 @@ const Header = () => {
 	const headStyle = {
 		display: "flex",
 		flexFlow: "row nowrap",
-		justifyContent: "flex-start",
+		justifyContent: "center",
 		alignItems: "center",
 		height: "60px",
+		backgroundColor: "black",
 	}
-	const imgStyle={
-		display: "inline-block",
-		margin: "2px",
-	}
+
 	const h1Style={
 		display: "inline-block",
-		fontSize: "12px",
+		// fontSize: "12px",
+		color: "white",
 		margin: "2px",
 	}
 	return (
 		<header style={headStyle}>
-			<img src="../../nasa-2-logo-png-transparent.png" style={imgStyle} />
 			<h1 style={h1Style}>NASA Photo of the Day</h1>
 		</header>
 	);

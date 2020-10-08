@@ -1,7 +1,7 @@
 import React from "react";
 
 const DateInput = (props) => {
-	const {date} = props;
+	const { handleChange, inputValue, handleSubmit } = props;
 
 	const styleDiv = {
 		display: "flex",
@@ -10,19 +10,17 @@ const DateInput = (props) => {
 		alignItems: "center",
 	};
 
-	const styleA = {
-		// display: "inline-block",
-	};
 
-	const styleH4 = {
-		// display: "inline",
-	};
 
 	return (
 		<div className="date-container" style={styleDiv}>
-			<a style={styleA}> ≤ </a>
-			<h5 style={styleH4}>{date}</h5>
-			<a style={styleA}> ≥ </a>
+			
+			<h5>Search for Date: (YYYY-MM-DD)</h5>
+			
+			<input type="text" value={inputValue} onChange={handleChange} />
+			<button onClick={handleSubmit}>Submit</button>
+			{/* <input type="submit" value="Submit" /> */}
+			{/* <input id="reset" type="reset" value="Reset" onClick={() => resetInput} /> */}
 		</div>
 	);
 }
