@@ -1,16 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Header = () => {
-	// const headStyle = {
-	// 	display: "flex",
-	// 	justifyContent: "center",
-	// 	alignItems: "center",
-	// 	height: "60px",
-	// 	backgroundColor: "black",
-	// }
-
-	const StyledHeader = styled.header`
+const StyledHeader = styled.header`
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
@@ -61,6 +52,17 @@ const Header = () => {
 		}
 	}
 `;
+
+const Header = () => {
+	// const headStyle = {
+	// 	display: "flex",
+	// 	justifyContent: "center",
+	// 	alignItems: "center",
+	// 	height: "60px",
+	// 	backgroundColor: "black",
+	// }
+
+	
 
 	// const h1Style={
 	// 	color: "white",
