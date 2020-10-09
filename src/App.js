@@ -11,6 +11,7 @@ import "./App.css";
 import Header from "./components/Header";
 import DateInput from "./components/DateInput";
 import PictureContainer from "./components/PictureContainer";
+import DateForm from "./components/DateForm";
 
 const App = () => {
 	const [picture, setPicture] = useState({});
@@ -20,8 +21,13 @@ const App = () => {
 
 
 	const handleChange = (e) => {
-		const { value } = e.target;
+		console.log(e);
+		console.log(e.target);
+		debugger;
+		e.preventDefault();
+		const { value } = e.currentTarget;
 		setInputValue(value);
+
 	};
 
 	const getRandomInterval = (min, max) => {
@@ -113,6 +119,7 @@ const App = () => {
 			<Header />
 			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} />
 			<PictureContainer picture={picture} />
+			<DateForm date={date} setDate={setDate} />
 			<footer className="footer">
 				<h4>NASA Photo of the Day</h4>
 			</footer>
