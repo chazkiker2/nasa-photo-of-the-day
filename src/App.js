@@ -12,7 +12,7 @@ import "./App.css";
 import Header from "./components/Header";
 import DateInput from "./components/DateInput";
 import PictureContainer from "./components/PictureContainer";
-import DateForm from "./components/DateForm";
+// import DateForm from "./components/DateForm";
 
 
 const StyledContainer = styled.div`
@@ -55,6 +55,33 @@ const App = () => {
 		reset();
 	}
 
+	const getRandomInterval = (min, max) => {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	};
+
+	const handleRandom = (e) => {
+		const randYear = getRandomInterval(1995, 2020);
+		const randMonth = (randYear === 1995)
+			? getRandomInterval(6, 12)
+			: getRandomInterval(1, 12);
+		const getRandomDay = () => {
+			const getMaxDay = () => {
+				if (randMonth === 2) {
+					return 28;
+				} else if (randMonth === 4 || 6 || 9 || 11) {
+					return 30;
+				} else {
+					return 31;
+				}
+				//31 : 1, 3, 5, 7, 8, 10, 12 || 30 : 4, 6, 9, 11 || 28 : 2
+			}
+			return getRandomInterval(((randYear === 1995) ? 16 : 1), getMaxDay())
+		}
+		const randDay = getRandomDay();
+		const randomDateString = `${String(randYear)}-${String(randMonth).padStart(2, '0')}-${String(randDay).padStart(2, '0')}`;
+		setDate(randomDateString);
+	};
+
 	// const DateForm = () => {
 	// 	return (
 	// 		<form onSubmit={handleSubmit}>
@@ -86,8 +113,7 @@ const App = () => {
 	return (
 		<StyledContainer>
 			<Header />
-			<DateForm value={value} bind={bind} reset={reset} handleSubmit={handleSubmit} />
-			{/* <DateInput handleChange={handleChange} handleSubmit={handleSubmit} handleRandom={handleRandom} inputValue={inputValue} /> */}
+			<DateInput bind={bind} handleSubmit={handleSubmit} handleRandom={handleRandom} />
 			<PictureContainer picture={picture} />
 			<footer className="footer">
 				<h4>NASA Photo of the Day</h4>

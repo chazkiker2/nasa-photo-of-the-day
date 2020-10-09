@@ -7,7 +7,6 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	background-color: ${pr => pr.theme.primaryBlue};
-
 	/* margin-bottom: 0px; */
 	h1 {
 		display: inline-block;
@@ -54,19 +53,6 @@ const StyledHeader = styled.header`
 `;
 
 const Header = () => {
-	// const headStyle = {
-	// 	display: "flex",
-	// 	justifyContent: "center",
-	// 	alignItems: "center",
-	// 	height: "60px",
-	// 	backgroundColor: "black",
-	// }
-
-	
-
-	// const h1Style={
-	// 	color: "white",
-	// }
 	return (
 		<StyledHeader>
 			<h1>N<span>A</span>SA Photo of the Day</h1>

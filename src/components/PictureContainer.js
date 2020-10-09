@@ -1,38 +1,53 @@
 import React from 'react';
+import styled from "styled-components";
 import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 // import PictureDetails from "./PictureDetails";
+
+const StyledPic = styled.div`
+	display: flex;
+	max-width: 60%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	Card {
+		display: flex;
+		flex-direction: row wrap;
+
+		CardBody {
+			display: inline-block;
+			margin: 0 auto;
+			width: 40%;
+			CardTitle {
+				font-size: 2rem;
+			}
+		}
+
+		img {
+			max-width: 400px;
+			width: 20px;
+		}
+	}
+`;
 
 
 const PictureContainer = (props) => {
 	const { picture } = props;
 	const { title, date, url, explanation } = picture;
 
-	const stylePic = {
-		display: "flex",
-		// width: "40%",
-		flexDirection: "column",
-		justifyContent: "center",
-		alignItems: "center",
-		margin: "0 auto",
-	};
-
 	return (
-		<div className="pic-container" style={stylePic}>
-			<Card style={{width: "40%", margin: "2rem",}}>
+		<StyledPic className="pic-container">
+			<Card>
 				<CardBody>
-					<CardTitle style={{fontWeight: "bold", textAlign: "center", fontSize: "2rem"}}>{title}</CardTitle>
-					<CardSubtitle 
-						style={{fontWeight: "400", textAlign: "center", fontSize: "1.5rem"}}
-						>{date}
-					</CardSubtitle>
+					<CardTitle>{title}</CardTitle>
+					<CardSubtitle>{date}</CardSubtitle>
 				</CardBody>
-				<img src={url} alt={title} 
-					style={{display: "inline-block", textAlign: "center" }}/>
+				<img src={url} alt={title} />
 				<CardBody>
-					<CardText style={{fontSize: "1.2rem"}}>{explanation}</CardText>
+					<CardText>{explanation}</CardText>
 				</CardBody>
 			</Card>
-		</div>
+		</StyledPic>
 	);
 };
 
