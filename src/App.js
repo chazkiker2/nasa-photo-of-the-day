@@ -1,29 +1,86 @@
 import React, { useState, useEffect } from "react";
+import { useInput } from "./hooks/input-hook";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from "styled-components";
 import axios from "axios";
 // CONSTANTS
-import {API_KEY, BASE_URL} from "./constants/index";
+import { API_KEY, BASE_URL, getCurrentDateFormatted } from "./constants/index";
 // STYLE
 import "./App.css";
+
 // COMPONENTS
-import Header from "./components/Header/Header";
-import DateInput from "./components/DateInput/DateInput";
-import PicturesGallery from "./components/Picture/PicturesGallery";
+import Header from "./components/Header";
+import DateInput from "./components/DateInput";
+import PictureContainer from "./components/PictureContainer";
+// import DateForm from "./components/DateForm";
+
+
+const StyledContainer = styled.div`
+		box-sizing: border-box;
+		font-size: 62.5%;
+		background-color: ${pr => pr.theme.lightBlue};
+
+		footer {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: ${pr => pr.theme.primaryBlue};
+			font-family: ${pr => pr.theme.nasaFont.fontFamily};
+			font-weight: 400;
+			font-style: normal;
+			margin-bottom: 0px;
+
+		h4 {
+			display: block;
+			font-size: 3rem;
+			font-family: ${pr => pr.theme.nasaFont.fontFamily};
+			font-weight: 400;
+			font-style: normal;
+			color: ${pr => pr.theme.nasaRed};
+			margin: 0 auto;
+		}
+		}
+	`;
 
 const App = () => {
-	const [pictures, setPictures] = useState([]);
-	const [date, setDate] = useState("2020-10-07");
-	const [inputValue, setInputValue] = useState("");
+	const [picture, setPicture] = useState({});
+	const [date, setDate] = useState(getCurrentDateFormatted());
+	// const [inputValue, setInputValue] = useState("");
+	const { value, bind, reset } = useInput("");
 
-	const handleChange = (e) => {
-		const {value} = e.target;
-		setInputValue(value);
+	const handleSubmit = (evt) => {
+		evt.preventDefault();
+		alert(`Submitting Date ${value}`);
+		setDate(value);
+		reset();
+	}
+
+	const getRandomInterval = (min, max) => {
+		return Math.floor(Math.random() * (max - min + 1) + min);
 	};
 
-	const handleSubmit = (e) => {
-		setDate(inputValue);
-		setInputValue(inputValue);
-		e.preventDefault();
-	}
+	const handleRandom = (e) => {
+		const randYear = getRandomInterval(1995, 2020);
+		const randMonth = (randYear === 1995)
+			? getRandomInterval(6, 12)
+			: getRandomInterval(1, 12);
+		const getRandomDay = () => {
+			const getMaxDay = () => {
+				if (randMonth === 2) {
+					return 28;
+				} else if (randMonth === 4 || 6 || 9 || 11) {
+					return 30;
+				} else {
+					return 31;
+				}
+				//31 : 1, 3, 5, 7, 8, 10, 12 || 30 : 4, 6, 9, 11 || 28 : 2
+			}
+			return getRandomInterval(((randYear === 1995) ? 16 : 1), getMaxDay())
+		}
+		const randDay = getRandomDay();
+		const randomDateString = `${String(randYear)}-${String(randMonth).padStart(2, '0')}-${String(randDay).padStart(2, '0')}`;
+		setDate(randomDateString);
+	};
 
 	useEffect(() => {
 		const endpoint = `&date=${date}`
@@ -31,7 +88,7 @@ const App = () => {
 		const fetchData = () => {
 			axios.get(queryString)
 				.then(res => {
-					setPictures(res.data);
+					setPicture(res.data);
 				})
 				.catch(err => {
 					debugger;
@@ -40,27 +97,20 @@ const App = () => {
 		fetchData();
 	}, [date]);
 
-	const styleFooter = {
-		display: "flex",
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "black",
-	};
-	const styleH4 = {
-		color: "white",
-	};
 
 	return (
-		<>
+		<StyledContainer>
 			<Header />
-			<DateInput handleChange={handleChange} handleSubmit={handleSubmit} inputValue={inputValue} />
-			<PicturesGallery pictures={pictures} />
-			<footer className="footer" style={styleFooter}>
-				<h4 style={styleH4}>NASA Photo of the Day</h4>
+			<DateInput bind={bind} handleSubmit={handleSubmit} handleRandom={handleRandom} />
+			<PictureContainer picture={picture} />
+			<footer className="footer">
+				<h4>NASA Photo of the Day</h4>
 			</footer>
-		</>
+		</StyledContainer>
 	);
 };
 
 
 export default App;
+
+
